@@ -256,7 +256,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         title: '${news.length} news',
                         onViewAllTap: () => widget.goToNews(),
                         children: List.generate(
-                          news.length,
+                          2,
                           (index) {
                             final n = news[index];
                             return Column(
@@ -420,51 +420,49 @@ class TabComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        margin: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: CustomTheme.dividerColor),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
+    return Container(
+      margin: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: CustomTheme.dividerColor),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: CustomTheme.textGreyColor,
+                  ),
+                ),
+                InkWell(
+                  onTap: onViewAllTap,
+                  child: Text(
+                    'View all',
+                    style: TextStyle(
                       fontSize: 16,
-                      color: CustomTheme.textGreyColor,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
-                  InkWell(
-                    onTap: onViewAllTap,
-                    child: Text(
-                      'View all',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: 8),
-            const Divider(
-              color: CustomTheme.dividerColor,
-              thickness: 1,
-            ),
-            ...children,
-            const SizedBox(height: 24),
-          ],
-        ),
+          ),
+          const SizedBox(height: 8),
+          const Divider(
+            color: CustomTheme.dividerColor,
+            thickness: 1,
+          ),
+          ...children,
+          const SizedBox(height: 24),
+        ],
       ),
     );
   }
